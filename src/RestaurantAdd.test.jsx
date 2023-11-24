@@ -21,7 +21,15 @@ describe('RestaurantAdd', () => {
     fireEvent.click(addButton);
 
     // Assert
-    expect(onAddRestaurant).toHaveBeenCalledWith('마녀주방 | 한식 | 서울시 강남구');
+    expect(onAddRestaurant).toHaveBeenCalledWith({
+      name: '마녀주방',
+      category: '한식',
+      address: '서울시 강남구',
+    });
+
+    expect(onAddRestaurant.mock.calls[0][0].name).toBe('마녀주방');
+    expect(onAddRestaurant.mock.calls[0][0].category).toBe('한식');
+    expect(onAddRestaurant.mock.calls[0][0].address).toBe('서울시 강남구');
 
     // Additional assertions as needed
   });
